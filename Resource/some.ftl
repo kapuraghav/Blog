@@ -1,2 +1,2 @@
-FreeMarker Template example: ${name}  
+FreeMarker Template example: ${name}
  

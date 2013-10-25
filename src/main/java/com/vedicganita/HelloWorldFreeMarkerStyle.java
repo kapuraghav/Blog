@@ -17,18 +17,23 @@ import freemarker.template.TemplateException;
 public class HelloWorldFreeMarkerStyle {
 	public static void main(String[] args) throws TemplateException {
 		Configuration cfg = new Configuration();
-		cfg.setClassForTemplateLoading(HelloWorldFreeMarkerStyle.class, "/");
 		try {
-			Template template = cfg.getTemplate("/some.ftl");
+			Template template = cfg.getTemplate("Resource/some.ftl");
+			Template template1 = cfg.getTemplate("Template/template.ftl");
 			Map<String, Object> helomap = new HashMap <String, Object>();
 			helomap.put("name", "Raghav");
-//				List<String> countries = new ArrayList();
-//				countries.add("India");
-//				countries.add("paksitan");
-//				countries.add("Nepal");
-//			helomap.put("countries", countries);
+			helomap.put("message", "Hello World");
+				List<String> countries = new ArrayList();
+				countries.add("India");
+				countries.add("paksitan");
+				countries.add("Nepal");
+			helomap.put("countries", countries);
 			StringWriter out = new StringWriter();
+			StringWriter out1 = new StringWriter();
 			template.process(helomap, out);
+			template1.process(helomap, out1);
+			System.out.print(out);
+			System.out.print(out1);
 			out.flush();
 		} catch (IOException e) {
 			
